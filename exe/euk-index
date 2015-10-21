@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'exploreuk'
+
+module Exploreuk
+  class Indexer
+    include Task
+
+    def initialize
+      @solr = RSolr.connect :url => ENV['SOLR_URL']
+      super
+    end
+
+    def handle path
+      doc = JSON.parse(IO.read(path))
+      @solr.add doc
+      @solr.commit
+    end
+  end
+end
+
+task = Exploreuk::Indexer.new
+task.run

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'exploreuk'
+
+module Exploreuk
+  class Unindexer
+    include Task
+
+    def initialize
+      @solr = RSolr.connect :url => ENV['SOLR_URL']
+      super
+    end
+
+    def handle path
+      doc = JSON.parse(IO.read(path))
+      @solr.delete_by_id doc['id']
+      @solr.commit
+    end
+  end
+end
+
+task = Exploreuk::Unindexer.new
+task.run
