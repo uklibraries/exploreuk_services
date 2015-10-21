@@ -1,4 +1,4 @@
-# Exploreuk
+# exploreuk_services
 
 Service scripts for ExploreUK.
 
@@ -29,7 +29,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/exploreuk.
+Bug reports and pull requests are welcome on GitHub at https://github.com/uklibraries/exploreuk_services.
 
 
 ## License
